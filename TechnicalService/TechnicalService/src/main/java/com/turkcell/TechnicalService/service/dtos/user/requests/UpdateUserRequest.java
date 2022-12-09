@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class UpdateUserRequest {
 
 	@NotNull
-	private int userId;
+	private long userId;
 	
 	@Size(max = 50)
 	@NotBlank
@@ -25,9 +25,6 @@ public class UpdateUserRequest {
 	@NotBlank
 	private String userPassword;
 	
-	@Size(max = 100)
-	@NotBlank
-	private String userNameSurname;
 	
 	@Email
 	@Size(max = 50)	

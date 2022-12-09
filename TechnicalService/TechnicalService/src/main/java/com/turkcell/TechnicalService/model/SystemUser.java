@@ -1,11 +1,14 @@
 package com.turkcell.TechnicalService.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -22,35 +25,34 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Users")
 public class SystemUser {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private int userId;
-	
-	@Size(max = 50)
-	@Column(name = "username")
-	private String username;
-	
-	@Size(max = 50)
-	@Column(name = "user_password")
-	private String userPassword;
-	
+	private long systemUserId;
+
+	@Column(length = 100)
+	private String name;
+
+	@Column(nullable = false)
+	private String password;
+
 	@Email
-	@Size(max = 50)
-	@Column(name = "user_mail")
-	private String userMail;
-	
-	@Size(max = 100)
-	@Column(name = "user_nameSurname")
-	private String userNameSurname;
-	
-	@ManyToOne
-	@JoinColumn(name = "user_role")
+	@Column(unique = true, nullable = false, length = 200)
+	private String mail;
+
+
+	@ManyToMany
+	@JoinColumn(name = "role_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Role userRole;
+	private List<Role> roles;
+
+	public SystemUser(long systemUserId) {
+		this.systemUserId = systemUserId;
+	}
+
+	
+	
 	
 
 }

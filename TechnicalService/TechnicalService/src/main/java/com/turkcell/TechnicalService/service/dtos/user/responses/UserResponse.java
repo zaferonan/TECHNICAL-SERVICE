@@ -9,14 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponse {
 
-	private int userId;
-	
+	private long userId;	
 
 	private String username;
-
-
-	private String userNameSurname;
-	
 	
 	private String userMail;
+	
+	private String role;
 }

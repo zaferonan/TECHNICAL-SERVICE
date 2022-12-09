@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ListUserResponse {
 
-	private int userId;
+	private long userId;
 
 	private String username;
 	
-	private String userNameSurname;
-
-	
+	private String role;	
 	
 }

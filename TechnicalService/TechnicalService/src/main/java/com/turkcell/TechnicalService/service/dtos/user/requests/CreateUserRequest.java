@@ -25,8 +25,5 @@ public class CreateUserRequest {
 	@Email
 	@Size(max = 50)	
 	private String userMail;
-	
-	@Size(max = 100)
-	@NotBlank
-	private String userNameSurname;
+
 }
