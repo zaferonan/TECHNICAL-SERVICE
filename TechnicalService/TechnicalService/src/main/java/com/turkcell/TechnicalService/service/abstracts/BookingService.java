@@ -12,7 +12,7 @@ import com.turkcell.TechnicalService.service.dtos.booking.responses.ListBookingR
 
 public interface BookingService {
 
-	public DataResult<BookingResponse> createBooking(CreateBookingRequest createBookingRequest,Locale locale);
+	public DataResult<BookingResponse> save(CreateBookingRequest createBookingRequest,Locale locale);
 	public DataResult<BookingResponse> getById(long bookingId,Locale locale);
 	public DataResult<List<ListBookingResponse>> getAll(Sort.Direction direction,Locale locale);
 	public DataResult<BookingResponse> delete(long bookingId,Locale locale);

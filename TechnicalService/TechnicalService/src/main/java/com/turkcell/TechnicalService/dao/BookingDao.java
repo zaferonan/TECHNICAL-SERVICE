@@ -17,7 +17,7 @@ public interface BookingDao extends JpaRepository<Booking, Long>{
 
 	List<Booking> searchByBookingDate(LocalDate bookingDate);
 
-	List<Booking> findBySystemUserNameContains(String userName);
+	List<Booking> findBySystemUserNameContainsIgnoreCase(String userName);
 
 	
 

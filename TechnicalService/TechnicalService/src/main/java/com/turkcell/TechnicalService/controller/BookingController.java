@@ -34,7 +34,7 @@ public class BookingController {
 	@PostMapping("/createBooking")
 	public DataResult<BookingResponse> createBooking(@Valid @RequestBody CreateBookingRequest createBookingRequest,Locale locale){
 				
-		return bookingService.createBooking(createBookingRequest,locale);
+		return bookingService.save(createBookingRequest,locale);
 		
 	}
 	

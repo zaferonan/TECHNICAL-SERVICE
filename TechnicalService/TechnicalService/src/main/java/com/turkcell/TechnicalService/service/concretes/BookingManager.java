@@ -35,7 +35,7 @@ public class BookingManager implements BookingService {
 
 	// User Operation
 	@Override
-	public DataResult<BookingResponse> createBooking(CreateBookingRequest createBookingRequest, Locale locale) {
+	public DataResult<BookingResponse> save(CreateBookingRequest createBookingRequest, Locale locale) {
 
 		Booking booking = new Booking();
 		booking.setSystemUser(systemUserService.getByIdAsUser(createBookingRequest.getSystemUserId(), locale));
@@ -123,7 +123,7 @@ public class BookingManager implements BookingService {
 	// Admin Operation
 	@Override
 	public DataResult<List<ListBookingResponse>> getByName(String userName, Locale locale) {
-		List<Booking> bookings = bookingDao.findBySystemUserNameContains(userName);
+		List<Booking> bookings = bookingDao.findBySystemUserNameContainsIgnoreCase(userName);
 		List<ListBookingResponse> listBookingResponses = new ArrayList<ListBookingResponse>();
 
 		for (Booking booking : bookings) {
@@ -164,7 +164,6 @@ public class BookingManager implements BookingService {
 			dailyWorkHours = serviceDuration;
 			bookingDate = bookingDate.plusDays(1L);
 			List<Booking> bookings = bookingDao.searchByBookingDate(bookingDate);
-
 			for (Booking booking : bookings) {
 				dailyWorkHours += booking.getBookingService().getServiceDuration();
 			}
