@@ -96,7 +96,7 @@ public class SaleManager implements SaleService {
 	public void checkSaleIsSold(@NotNull long saleId, Locale locale) {
 		checkSaleIdExists(saleId, locale);
 		if(saleDao.findById(saleId).get().isSold()) {
-			throw new BusinessException(messageSource.getMessage("sale.checksaleissold.error",null, locale)+" "+saleId);
+			throw new BusinessException(messageSource.getMessage("sale.checksaleissold.error",new Object[] {saleId}, locale));
 		}
 		
 	}
@@ -134,7 +134,7 @@ public class SaleManager implements SaleService {
 		}
 
 		return new SuccessDataResult<List<ListSaleResponse>>(listSaleResponses,
-				messageSource.getMessage("sale.getallbyproduct.success", null, locale)+" "+productName);
+				messageSource.getMessage("sale.getallbyproduct.success", new Object[] {productName}, locale));
 	}
 
 }

@@ -23,7 +23,7 @@ import com.turkcell.TechnicalService.service.dtos.sale.responses.SaleResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/sale")
+@RequestMapping("/admin/sale")
 @RequiredArgsConstructor
 public class SaleController {
 

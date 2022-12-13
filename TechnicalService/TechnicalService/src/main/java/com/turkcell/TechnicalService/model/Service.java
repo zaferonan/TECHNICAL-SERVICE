@@ -20,7 +20,7 @@ public class Service {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long serviceId;
 	
-	
+	@Column(length = 100)
 	private String serviceName;
 	
 	private int desktop;

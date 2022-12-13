@@ -26,7 +26,7 @@ public class ServiceManager implements ServiceService{
 
 	private void checkServiceIdExists(long bookingServiceId, Locale locale) {
 		if(!serviceDao.existsById(bookingServiceId)) {
-			throw new BusinessException(messageSource.getMessage("service.checkserviceidexists.error", null, locale)+" "+bookingServiceId);
+			throw new BusinessException(messageSource.getMessage("service.checkserviceidexists.error", new Object[] {bookingServiceId}, locale));
 		}
 		
 	}

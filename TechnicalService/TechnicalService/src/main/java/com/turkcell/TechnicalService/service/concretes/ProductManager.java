@@ -29,7 +29,7 @@ public class ProductManager implements ProductService {
 	private void checkProductIdExists(long productId, Locale locale) {
 		if (!productDao.existsById(productId)) {
 			throw new BusinessException(
-					messageSource.getMessage("product.checkproductidexists.error", null, locale) + " " + productId);
+					messageSource.getMessage("product.checkproductidexists.error", new Object[] {productId}, locale));
 		}
 
 	}

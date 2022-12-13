@@ -12,7 +12,7 @@ import com.turkcell.TechnicalService.dao.PurchaseDao;
 import com.turkcell.TechnicalService.model.Sale;
 import com.turkcell.TechnicalService.model.SaleLog;
 import com.turkcell.TechnicalService.model.SystemUser;
-import com.turkcell.TechnicalService.service.abstracts.PurchaseService;
+import com.turkcell.TechnicalService.service.abstracts.SaleForUserService;
 import com.turkcell.TechnicalService.service.abstracts.SaleService;
 import com.turkcell.TechnicalService.service.abstracts.SystemUserService;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.ListSaleResponse;
@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class PurchaseManager implements PurchaseService {
+public class SaleForUserManager implements SaleForUserService {
 
 	private final PurchaseDao purchaseDao;
 	private final SaleService saleService;

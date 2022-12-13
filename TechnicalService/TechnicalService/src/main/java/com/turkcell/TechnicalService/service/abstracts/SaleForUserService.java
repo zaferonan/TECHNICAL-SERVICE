@@ -8,7 +8,7 @@ import com.turkcell.TechnicalService.service.dtos.sale.responses.ListSaleRespons
 import com.turkcell.TechnicalService.service.dtos.saleLog.requests.PurchaseRequest;
 import com.turkcell.TechnicalService.service.dtos.saleLog.responses.PurchaseResponse;
 
-public interface PurchaseService {
+public interface SaleForUserService {
 
 	public DataResult<PurchaseResponse> purchaseProduct(PurchaseRequest purchaseRequest,Locale locale);
 	public DataResult<List<ListSaleResponse>> getAllSalesByProduct(String productName, Locale locale);

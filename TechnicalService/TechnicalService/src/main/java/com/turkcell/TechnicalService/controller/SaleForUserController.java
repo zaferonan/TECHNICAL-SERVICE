@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
-import com.turkcell.TechnicalService.service.abstracts.PurchaseService;
+import com.turkcell.TechnicalService.service.abstracts.SaleForUserService;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.ListSaleResponse;
 import com.turkcell.TechnicalService.service.dtos.saleLog.requests.PurchaseRequest;
 import com.turkcell.TechnicalService.service.dtos.saleLog.responses.PurchaseResponse;
@@ -23,18 +23,18 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/purchase")
-public class PurchaseController {
+public class SaleForUserController {
 
-	private final PurchaseService purchaseService;
+	private final SaleForUserService saleForUserService;
 	
 	@PostMapping("purchaseProduct")
 	public DataResult<PurchaseResponse> purchaseProduct(@Valid @RequestBody PurchaseRequest purchaseRequest,Locale locale){
 		
-		return purchaseService.purchaseProduct(purchaseRequest, locale);
+		return saleForUserService.purchaseProduct(purchaseRequest, locale);
 		
 	}
 	@GetMapping("/getSalesByProduct")
 	public DataResult<List<ListSaleResponse>> getAllSalesByProduct(@Valid @RequestParam String productName, Locale locale){
-		return purchaseService.getAllSalesByProduct(productName, locale);
+		return saleForUserService.getAllSalesByProduct(productName, locale);
 	}
 }
