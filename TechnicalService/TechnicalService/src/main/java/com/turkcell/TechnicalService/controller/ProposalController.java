@@ -35,7 +35,7 @@ public class ProposalController {
 		return proposalService.getBidsByUser(systemUserId, locale);
 	}
 	@GetMapping("/getBidsByState")
-	public DataResult<List<ListProposalResponse>> getBidsByState(@RequestBody ProposalState proposalState,Locale locale){
+	public DataResult<List<ListProposalResponse>> getBidsByState(@RequestParam String proposalState,Locale locale){
 		return proposalService.getBidsByState(proposalState, locale);
 	}
 	@GetMapping("/getBidsById")

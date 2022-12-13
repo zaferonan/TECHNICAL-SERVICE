@@ -43,8 +43,8 @@ public class SaleController {
 		return saleService.delete(saleId, locale);
 	}
 	@GetMapping("/getById")
-	public Sale getById(@Valid @RequestParam long saleId) {
-		return saleService.getById(saleId);
+	public DataResult<SaleResponse> getById(@Valid @RequestParam long saleId,Locale locale) {
+		return saleService.getById(saleId,locale);
 	}
 	
 	

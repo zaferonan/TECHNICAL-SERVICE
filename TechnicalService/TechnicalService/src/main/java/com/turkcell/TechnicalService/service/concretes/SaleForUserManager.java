@@ -36,7 +36,7 @@ public class SaleForUserManager implements SaleForUserService {
 		saleService.checkSaleIsSold(purchaseRequest.getSaleId(), locale);
 		saleService.markAsSold(purchaseRequest.getSaleId());
 
-		Sale sale = saleService.getById(purchaseRequest.getSaleId());
+		Sale sale = saleService.getByIdAsSale(purchaseRequest.getSaleId(),locale);
 		SystemUser systemUser = systemUserService.getByIdAsUser(purchaseRequest.getSystemUserId(), locale);
 		SaleLog saleLog = new SaleLog();
 		saleLog.setSale(sale);

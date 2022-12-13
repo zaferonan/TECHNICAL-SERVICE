@@ -12,7 +12,7 @@ insert into technicalservice.system_user (mail, name, password) VALUES ( '2@2.co
 insert into technicalservice.system_user_roles (system_user_system_user_id, roles_role_id)VALUES (1, 1);
 insert into technicalservice.system_user_roles (system_user_system_user_id, roles_role_id)VALUES (2, 2);
 
-insert into technicalservice.product(product_name) values ("CPU");
-insert into technicalservice.product(product_name) values ("GPU");
-insert into technicalservice.product(product_name) values ("RAM");
-insert into technicalservice.product(product_name) values ("MOTHERBOARD");
+insert into technicalservice.product (product_name) VALUES ('CPU');
+insert into technicalservice.product (product_name) VALUES ('GPU');
+insert into technicalservice.product (product_name) VALUES ('RAM');
+insert into technicalservice.product (product_name) VALUES ('MOTHERBOARD');

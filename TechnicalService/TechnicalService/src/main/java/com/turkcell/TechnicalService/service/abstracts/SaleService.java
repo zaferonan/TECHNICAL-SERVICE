@@ -17,9 +17,10 @@ public interface SaleService {
 	public DataResult<List<ListSaleResponse>> getAll(Locale locale);
 	public DataResult<SaleResponse> delete(long saleId,Locale locale);
 	public void checkSaleIsSold(@NotNull long saleId, Locale locale);
-	public void markAsSold(@NotNull long saleId);
-	public Sale getById(@NotNull long saleId);
+	public void markAsSold(@NotNull long saleId);	
 	public DataResult<List<ListSaleResponse>> getAllByProduct(String productName,Locale locale);
+	public DataResult<SaleResponse> getById(@NotNull long saleId, Locale locale);
+	public Sale getByIdAsSale(@NotNull long saleId, Locale locale);
 	
 	
 }

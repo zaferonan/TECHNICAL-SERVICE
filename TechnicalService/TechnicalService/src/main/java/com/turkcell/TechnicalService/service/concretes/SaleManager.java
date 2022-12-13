@@ -87,7 +87,7 @@ public class SaleManager implements SaleService {
 	
 	private void checkSaleIdExists(long saleId, Locale locale) {
 		if(!saleDao.existsById(saleId)) {
-			throw new BusinessException(messageSource.getMessage("sale.checksaleidexists.error",null, locale));
+			throw new BusinessException(messageSource.getMessage("sale.checksaleidexists.error",new Object[] {saleId}, locale));
 		}
 		
 	}
@@ -109,9 +109,14 @@ public class SaleManager implements SaleService {
 	}
 
 	@Override
-	public Sale getById(@NotNull long saleId) {
+	public DataResult<SaleResponse> getById(@NotNull long saleId,Locale locale) {
+		checkSaleIdExists(saleId, null);
+		Sale sale = saleDao.findById(saleId).get();
+		SaleResponse saleResponse = new SaleResponse(sale.getSaleId(), sale.getProduct().getProductId(),
+				sale.getProduct().getProductName(), sale.getSalePrice(), sale.getSaleNote(), sale.isSold());
 		
-		return saleDao.findById(saleId).get();
+		return new SuccessDataResult<SaleResponse>(saleResponse,
+				messageSource.getMessage("sale.getbyid.success", null, locale));
 	}
 
 	@Override
@@ -135,6 +140,12 @@ public class SaleManager implements SaleService {
 
 		return new SuccessDataResult<List<ListSaleResponse>>(listSaleResponses,
 				messageSource.getMessage("sale.getallbyproduct.success", new Object[] {productName}, locale));
+	}
+
+	@Override
+	public Sale getByIdAsSale(@NotNull long saleId, Locale locale) {
+		checkSaleIdExists(saleId, locale);
+		return saleDao.findById(saleId).get();
 	}
 
 }

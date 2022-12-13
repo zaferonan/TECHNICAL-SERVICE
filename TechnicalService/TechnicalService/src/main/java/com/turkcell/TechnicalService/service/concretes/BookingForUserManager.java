@@ -1,10 +1,12 @@
 package com.turkcell.TechnicalService.service.concretes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.turkcell.TechnicalService.core.exceptions.BusinessException;
@@ -18,6 +20,7 @@ import com.turkcell.TechnicalService.service.abstracts.ServiceService;
 import com.turkcell.TechnicalService.service.abstracts.SystemUserService;
 import com.turkcell.TechnicalService.service.dtos.booking.requests.CreateBookingRequest;
 import com.turkcell.TechnicalService.service.dtos.booking.responses.BookingResponse;
+import com.turkcell.TechnicalService.service.dtos.booking.responses.ListBookingResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -95,6 +98,26 @@ public class BookingForUserManager implements BookingForUserService {
 			messageSource.getMessage("booking.delete.error", null, locale));
 		}
 	}
+	
+	@Override
+	public DataResult<List<ListBookingResponse>> getAllByUser(long systemUserId, Locale locale) {		
+		List<Booking> bookings = bookingDao.findAllBySystemUserSystemUserId(systemUserId);
+		List<ListBookingResponse> listBookingResponses = new ArrayList<ListBookingResponse>();
+
+		for (Booking booking : bookings) {
+			ListBookingResponse listBookingResponse = new ListBookingResponse();
+			listBookingResponse.setBookingId(booking.getBookingId());
+			listBookingResponse.setSystemUserName(booking.getSystemUser().getName());
+			listBookingResponse.setBookingServiceName(booking.getBookingService().getServiceName());
+			listBookingResponse.setBookingDate(booking.getBookingDate());
+			listBookingResponse.setDone(booking.isDone());
+			
+			listBookingResponses.add(listBookingResponse);
+		}
+
+		return new SuccessDataResult<List<ListBookingResponse>>(listBookingResponses,
+				messageSource.getMessage("booking.getallbyuser.success", null, locale));
+	}
 
 	
 	private LocalDate createBookingDate(int serviceDuration) {
@@ -114,7 +137,7 @@ public class BookingForUserManager implements BookingForUserService {
 	private void checkBookingIdExists(long bookingId, Locale locale) {
 		if (!bookingDao.existsById(bookingId)) {
 			throw new BusinessException(
-					messageSource.getMessage("booking.checkbookingidexists.error", null, locale) + " " + bookingId);
+					messageSource.getMessage("booking.checkbookingidexists.error", new Object[] {bookingId}, locale));
 		}
 
 	}

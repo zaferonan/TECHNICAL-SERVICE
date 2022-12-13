@@ -1,5 +1,6 @@
 package com.turkcell.TechnicalService.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import com.turkcell.TechnicalService.core.utils.results.DataResult;
 import com.turkcell.TechnicalService.service.abstracts.BookingForUserService;
 import com.turkcell.TechnicalService.service.dtos.booking.requests.CreateBookingRequest;
 import com.turkcell.TechnicalService.service.dtos.booking.responses.BookingResponse;
+import com.turkcell.TechnicalService.service.dtos.booking.responses.ListBookingResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,6 +48,10 @@ public class BookingForUserController {
 	public DataResult<BookingResponse> getById(@RequestParam long bookingId, Locale locale) {
 		return bookingForUserService.getById(bookingId, locale);
 
+	}
+	@GetMapping("/getAllByUser")
+	public DataResult<List<ListBookingResponse>> getAllByUser(long systemUserId, Locale locale){
+		return bookingForUserService.getAllByUser(systemUserId, locale);
 	}
 
 }

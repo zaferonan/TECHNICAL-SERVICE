@@ -2,8 +2,7 @@ package com.turkcell.TechnicalService.service.dtos.proposal.responses;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.turkcell.TechnicalService.model.ProposalState;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProposalResponse {
 
-	@DateTimeFormat(pattern = "DD/MM/YYYY")
+	@JsonFormat(pattern = "dd.MM.yyyy")
 	private LocalDate proposalDate;
 
 	private long systemUserId;

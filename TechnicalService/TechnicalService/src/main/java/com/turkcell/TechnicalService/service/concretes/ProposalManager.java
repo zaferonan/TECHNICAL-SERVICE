@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.util.EnumUtils;
 
 import com.turkcell.TechnicalService.core.exceptions.BusinessException;
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
@@ -71,8 +72,9 @@ public class ProposalManager implements ProposalService {
 	}
 
 	@Override
-	public DataResult<List<ListProposalResponse>> getBidsByState(ProposalState proposalState, Locale locale) {
-		List<Proposal> proposals = proposalDao.findAllByProposalState(proposalState,
+	public DataResult<List<ListProposalResponse>> getBidsByState(String proposalState, Locale locale) {
+		checkProposalStateIsValid(proposalState,locale);
+		List<Proposal> proposals = proposalDao.findAllByProposalState(EnumUtils.findEnumInsensitiveCase(ProposalState.class, proposalState),
 				Sort.by(Direction.ASC, "proposalId"));
 		List<ListProposalResponse> listProposalResponses = new ArrayList<ListProposalResponse>();
 		for (Proposal proposal : proposals) {
@@ -112,8 +114,9 @@ public class ProposalManager implements ProposalService {
 	@Override
 	public DataResult<ProposalResponse> changeBidState(UpdateProposalStateRequest updateProposalStateRequest, Locale locale) {
 		checkProposalIdExists(updateProposalStateRequest.getProposalId(), locale);
+		checkProposalStateIsValid(updateProposalStateRequest.getProposalState(),locale);
 		Proposal proposal=proposalDao.findById(updateProposalStateRequest.getProposalId()).get();
-		proposal.setProposalState(updateProposalStateRequest.getProposalState());
+		proposal.setProposalState(EnumUtils.findEnumInsensitiveCase(ProposalState.class,updateProposalStateRequest.getProposalState()));
 		
 		proposalDao.save(proposal);
 		
@@ -129,6 +132,16 @@ public class ProposalManager implements ProposalService {
 		
 		return new SuccessDataResult<ProposalResponse>(proposalResponse,
 				messageSource.getMessage("proposal.changeBidState.success",new Object[] {proposal.getProposalState().toString()}, locale));
+		
+		
+	}
+
+	private void checkProposalStateIsValid(String state, Locale locale) {
+		try {
+			EnumUtils.findEnumInsensitiveCase(ProposalState.class, state);
+		} catch (IllegalArgumentException e) {
+			throw new BusinessException(messageSource.getMessage("proposal.checkProposalStateIsValid.error",new Object[] {state,ProposalState.PENDING,ProposalState.DENIED,ProposalState.APPROVED}, locale));
+		}
 		
 		
 	}

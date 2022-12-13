@@ -38,7 +38,7 @@ public class Booking {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private SystemUser systemUser;
 	
-	@DateTimeFormat(pattern = "dd/mm/yyyy")
+	
 	private LocalDate bookingDate;
 	
 	@Column(length = 300)

@@ -2,6 +2,7 @@ package com.turkcell.TechnicalService.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
@@ -25,7 +27,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class SaleLog {
 
 	@Id
@@ -42,7 +43,8 @@ public class SaleLog {
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private Sale sale;
 	
-	@CreatedDate
+	@CreationTimestamp
+	@Column(updatable = false)
 	private LocalDate purchaseDate;
 	
 	

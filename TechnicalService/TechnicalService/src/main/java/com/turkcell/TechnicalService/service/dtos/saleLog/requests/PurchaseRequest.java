@@ -20,4 +20,6 @@ public class PurchaseRequest {
 	private String creditCardNumber;
 	@NotNull
 	private long systemUserId;
+	
+	
 }

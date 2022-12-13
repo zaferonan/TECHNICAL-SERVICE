@@ -19,6 +19,8 @@ public interface BookingDao extends JpaRepository<Booking, Long>{
 
 	List<Booking> findBySystemUserNameContainsIgnoreCase(String userName);
 
+	List<Booking> findAllBySystemUserSystemUserId(long systemUserId);
+
 	
 
 }

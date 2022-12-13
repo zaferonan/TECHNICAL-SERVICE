@@ -19,5 +19,7 @@ public class CreateProposalRequest {
 	
 	@Size(max=300)
 	private String proposalNote;
+	
+	
 		
 }

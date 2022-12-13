@@ -59,7 +59,8 @@ public class BookingManager implements BookingService {
 			listBookingResponse.setSystemUserName(booking.getSystemUser().getName());
 			listBookingResponse.setBookingServiceName(booking.getBookingService().getServiceName());
 			listBookingResponse.setBookingDate(booking.getBookingDate());
-
+			listBookingResponse.setDone(booking.isDone()); 
+			
 			listBookingResponses.add(listBookingResponse);
 		}
 
@@ -80,7 +81,8 @@ public class BookingManager implements BookingService {
 			listBookingResponse.setSystemUserName(booking.getSystemUser().getName());
 			listBookingResponse.setBookingServiceName(booking.getBookingService().getServiceName());
 			listBookingResponse.setBookingDate(booking.getBookingDate());
-
+			listBookingResponse.setDone(booking.isDone());
+			
 			listBookingResponses.add(listBookingResponse);
 		}
 
@@ -109,7 +111,7 @@ public class BookingManager implements BookingService {
 	private void checkBookingIdExists(long bookingId, Locale locale) {
 		if (!bookingDao.existsById(bookingId)) {
 			throw new BusinessException(
-					messageSource.getMessage("booking.checkbookingidexists.error", null, locale) + " " + bookingId);
+					messageSource.getMessage("booking.checkbookingidexists.error", new Object[] {bookingId}, locale));
 		}
 
 	}

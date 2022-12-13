@@ -13,7 +13,7 @@ public interface ProposalService {
 
 	public DataResult<List<ListProposalResponse>> getBids(Locale locale);
 	public DataResult<List<ListProposalResponse>> getBidsByUser(long systemUserId,Locale locale);
-	public DataResult<List<ListProposalResponse>> getBidsByState(ProposalState proposalState,Locale locale);
+	public DataResult<List<ListProposalResponse>> getBidsByState(String proposalState,Locale locale);
 	public DataResult<ProposalResponse> getById(long proposalId,Locale locale);
 	public DataResult<ProposalResponse> changeBidState(UpdateProposalStateRequest updateProposalStateRequest,Locale locale);
 }

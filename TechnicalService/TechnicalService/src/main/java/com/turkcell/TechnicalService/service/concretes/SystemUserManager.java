@@ -138,7 +138,7 @@ public class SystemUserManager implements SystemUserService {
 	private void checkUserIdExists(long systemUserId, Locale locale) {
 		if (!systemUserDao.existsById(systemUserId)) {
 			throw new BusinessException(
-					messageSource.getMessage("systemuser.checkuserid.error", null, locale) + " " + systemUserId);
+					messageSource.getMessage("systemuser.checkuserid.error", new Object[] {systemUserId}, locale));
 		}
 
 	}
