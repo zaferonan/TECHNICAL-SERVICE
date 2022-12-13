@@ -14,8 +14,6 @@ import com.turkcell.TechnicalService.core.utils.results.SuccessDataResult;
 import com.turkcell.TechnicalService.dao.BookingDao;
 import com.turkcell.TechnicalService.model.Booking;
 import com.turkcell.TechnicalService.service.abstracts.BookingService;
-import com.turkcell.TechnicalService.service.abstracts.ServiceService;
-import com.turkcell.TechnicalService.service.abstracts.SystemUserService;
 import com.turkcell.TechnicalService.service.dtos.booking.responses.BookingResponse;
 import com.turkcell.TechnicalService.service.dtos.booking.responses.ListBookingResponse;
 
