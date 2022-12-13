@@ -1,11 +1,9 @@
 package com.turkcell.TechnicalService.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +14,6 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,7 +41,7 @@ public class SaleLog {
 	
 	@CreationTimestamp
 	@Column(updatable = false)
-	private LocalDate purchaseDate;
+	private LocalDateTime purchaseDate;
 	
 	
 	private String creditCardNumber;

@@ -19,4 +19,6 @@ public class ListSaleResponse {
 	
 	
 	private String saleNote;
+	
+	private boolean isSold;
 }

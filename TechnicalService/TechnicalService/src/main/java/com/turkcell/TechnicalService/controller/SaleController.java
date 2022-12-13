@@ -47,5 +47,10 @@ public class SaleController {
 		return saleService.getById(saleId,locale);
 	}
 	
+	@GetMapping("/getAllByProduct")
+	public DataResult<List<ListSaleResponse>> getAllByProduct(String productName,Locale locale){
+		return saleService.getAllByProduct(productName,locale);
+	}
+	
 	
 }

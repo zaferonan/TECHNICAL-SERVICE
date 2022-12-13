@@ -60,6 +60,7 @@ public class SaleManager implements SaleService {
 			listSaleResponse.setProductName(sale.getProduct().getProductName());
 			listSaleResponse.setSalePrice(sale.getSalePrice());
 			listSaleResponse.setSaleNote(sale.getSaleNote());
+			listSaleResponse.setSold(sale.isSold());
 
 			listSaleResponses.add(listSaleResponse);
 		}
@@ -134,6 +135,7 @@ public class SaleManager implements SaleService {
 			listSaleResponse.setProductName(sale.getProduct().getProductName());
 			listSaleResponse.setSalePrice(sale.getSalePrice());
 			listSaleResponse.setSaleNote(sale.getSaleNote());
+			listSaleResponse.setSold(sale.isSold());
 
 			listSaleResponses.add(listSaleResponse);
 		}
@@ -146,6 +148,30 @@ public class SaleManager implements SaleService {
 	public Sale getByIdAsSale(@NotNull long saleId, Locale locale) {
 		checkSaleIdExists(saleId, locale);
 		return saleDao.findById(saleId).get();
+	}
+
+	@Override
+	public DataResult<List<ListSaleResponse>> getAllByProductForUser(String productName, Locale locale) {
+		List<Sale> sales;
+		if(productName!=null) {
+			sales= saleDao.findAllByProductProductNameContainsIgnoreCaseAndIsSold(productName,false,Sort.by("saleId").ascending());
+		}else {
+			sales = saleDao.findAllByIsSold(false,Sort.by("saleId").ascending());
+		}
+		List<ListSaleResponse> listSaleResponses = new ArrayList<ListSaleResponse>();
+		for (Sale sale : sales) {
+			ListSaleResponse listSaleResponse = new ListSaleResponse();
+			listSaleResponse.setSaleId(sale.getSaleId());
+			listSaleResponse.setProductName(sale.getProduct().getProductName());
+			listSaleResponse.setSalePrice(sale.getSalePrice());
+			listSaleResponse.setSaleNote(sale.getSaleNote());
+			listSaleResponse.setSold(sale.isSold());
+
+			listSaleResponses.add(listSaleResponse);
+		}
+
+		return new SuccessDataResult<List<ListSaleResponse>>(listSaleResponses,
+				messageSource.getMessage("sale.getallbyproduct.success", new Object[] {productName}, locale));
 	}
 
 }

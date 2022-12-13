@@ -42,6 +42,7 @@ public class SaleForUserManager implements SaleForUserService {
 		saleLog.setSale(sale);
 		saleLog.setCreditCardNumber(purchaseRequest.getCreditCardNumber());
 		saleLog.setSystemUser(systemUser);
+		
 		purchaseDao.save(saleLog);
 
 		PurchaseResponse purchaseResponse = new PurchaseResponse();
@@ -52,6 +53,7 @@ public class SaleForUserManager implements SaleForUserService {
 		purchaseResponse.setSystemUserName(saleLog.getSystemUser().getName());
 		purchaseResponse.setPurchaseDate(saleLog.getPurchaseDate());
 		purchaseResponse.setCreditCardNumber(saleLog.getCreditCardNumber());
+		purchaseResponse.setSalePrice(saleLog.getSale().getSalePrice());
 
 		return new SuccessDataResult<PurchaseResponse>(purchaseResponse,
 				messageSource.getMessage("purchase.purchaseproduct.success", null, locale));
@@ -61,6 +63,6 @@ public class SaleForUserManager implements SaleForUserService {
 	@Override
 	public DataResult<List<ListSaleResponse>> getAllSalesByProduct(String productName, Locale locale) {
 		
-		return saleService.getAllByProduct(productName, locale);
+		return saleService.getAllByProductForUser(productName, locale);
 	}
 }

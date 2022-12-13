@@ -19,6 +19,7 @@ public interface SaleService {
 	public void checkSaleIsSold(@NotNull long saleId, Locale locale);
 	public void markAsSold(@NotNull long saleId);	
 	public DataResult<List<ListSaleResponse>> getAllByProduct(String productName,Locale locale);
+	public DataResult<List<ListSaleResponse>> getAllByProductForUser(String productName,Locale locale);
 	public DataResult<SaleResponse> getById(@NotNull long saleId, Locale locale);
 	public Sale getByIdAsSale(@NotNull long saleId, Locale locale);
 	

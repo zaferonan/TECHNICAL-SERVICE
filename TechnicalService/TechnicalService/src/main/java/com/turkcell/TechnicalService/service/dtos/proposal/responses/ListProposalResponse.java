@@ -1,6 +1,6 @@
 package com.turkcell.TechnicalService.service.dtos.proposal.responses;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.turkcell.TechnicalService.model.ProposalState;
@@ -16,8 +16,8 @@ public class ListProposalResponse {
 		
 	private long proposalId;
 	
-	@JsonFormat(pattern = "dd.MM.yyyy")
-	private LocalDate proposalDate;
+	@JsonFormat(pattern = "dd.MM.yyyy - HH:mm")
+	private LocalDateTime proposalDate;
 	
 	private String systemUserName;
 

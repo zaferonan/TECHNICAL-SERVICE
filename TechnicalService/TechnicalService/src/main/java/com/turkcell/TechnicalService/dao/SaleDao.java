@@ -11,4 +11,8 @@ public interface SaleDao extends JpaRepository<Sale	, Long> {
 
 	List<Sale> findAllByProductProductNameContainsIgnoreCase(String productName, Sort direction);
 
+	List<Sale> findAllByProductProductNameContainsIgnoreCaseAndIsSold(String productName, boolean b, Sort ascending);
+
+	List<Sale> findAllByIsSold(boolean b, Sort ascending);
+
 }

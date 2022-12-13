@@ -1,6 +1,6 @@
 package com.turkcell.TechnicalService.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,5 +50,5 @@ public class Proposal {
 	
 	@CreationTimestamp
 	@Column(updatable = false)
-	private LocalDate proposalDate;
+	private LocalDateTime proposalDate;
 }
