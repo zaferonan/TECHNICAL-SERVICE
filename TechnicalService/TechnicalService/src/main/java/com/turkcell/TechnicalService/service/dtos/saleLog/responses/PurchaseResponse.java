@@ -1,6 +1,5 @@
 package com.turkcell.TechnicalService.service.dtos.saleLog.responses;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -25,6 +24,7 @@ public class PurchaseResponse {
 	private String productName;
 
 	private double salePrice;
+	
 	@JsonFormat(pattern = "dd.MM.yyyy - HH:mm")
 	private LocalDateTime purchaseDate;
 	

@@ -15,5 +15,7 @@ public interface SystemUserDao extends JpaRepository<SystemUser, Long> {
 	boolean existsByMail(String userMail);
 
 	List<SystemUser> findByRolesRoleName(String roleName);
+	
+	public SystemUser findByName(String userName);
 
 }

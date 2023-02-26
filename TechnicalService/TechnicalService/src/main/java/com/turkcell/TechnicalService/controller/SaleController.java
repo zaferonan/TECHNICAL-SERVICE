@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
-import com.turkcell.TechnicalService.model.Sale;
 import com.turkcell.TechnicalService.service.abstracts.SaleService;
 import com.turkcell.TechnicalService.service.dtos.sale.requests.CreateSaleRequest;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.ListSaleResponse;

@@ -3,6 +3,8 @@ package com.turkcell.TechnicalService.service.abstracts;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
 import com.turkcell.TechnicalService.model.SystemUser;
 import com.turkcell.TechnicalService.service.dtos.user.requests.CreateUserRequest;
@@ -10,7 +12,7 @@ import com.turkcell.TechnicalService.service.dtos.user.requests.UpdateUserReques
 import com.turkcell.TechnicalService.service.dtos.user.responses.ListUserResponse;
 import com.turkcell.TechnicalService.service.dtos.user.responses.UserResponse;
 
-public interface SystemUserService {
+public interface SystemUserService extends UserDetailsService{
 
 	public DataResult<List<ListUserResponse>> getAll(Locale locale);
 	public DataResult<UserResponse>  save(CreateUserRequest createUserRequest,Locale locale);

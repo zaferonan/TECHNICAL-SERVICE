@@ -1,6 +1,5 @@
 package com.turkcell.TechnicalService.service.dtos.saleLog.responses;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;

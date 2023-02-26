@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.turkcell.TechnicalService.core.exceptions.BusinessException;
@@ -28,6 +32,24 @@ public class SystemUserManager implements SystemUserService {
 
 	private final SystemUserDao systemUserDao;
 	private final MessageSource messageSource;
+	private final PasswordEncoder passwordEncoder;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		SystemUser myUser = systemUserDao.findByName(username);
+		if (myUser == null)
+		{
+			throw new UsernameNotFoundException("Kullanıcı adı bulunamadı");
+		}
+		// SystemUser sınıfı spring user sınıfından extend edilebilir
+		UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(myUser.getName());
+		builder.password(myUser.getPassword());
+		builder.authorities(myUser.getRoles());
+		return builder.build();
+	}
+
+	
+	
 
 	@Override
 	public DataResult<List<ListUserResponse>> getAll(Locale locale) {
@@ -52,7 +74,7 @@ public class SystemUserManager implements SystemUserService {
 
 		SystemUser systemUser = new SystemUser();
 		systemUser.setName(createUserRequest.getUsername());
-		systemUser.setPassword(createUserRequest.getUserPassword());
+		systemUser.setPassword(passwordEncoder.encode(createUserRequest.getUserPassword()));
 		systemUser.setMail(createUserRequest.getUserMail());
 		systemUser.setRoles(Arrays.asList(new Role(2, "ROLE_USER")));
 
@@ -83,7 +105,7 @@ public class SystemUserManager implements SystemUserService {
 		SystemUser systemUser = new SystemUser();
 		systemUser.setSystemUserId(updateUserRequest.getUserId());
 		systemUser.setName(updateUserRequest.getUsername());
-		systemUser.setPassword(updateUserRequest.getUserPassword());
+		systemUser.setPassword(passwordEncoder.encode(updateUserRequest.getUserPassword()));
 		systemUser.setMail(updateUserRequest.getUserMail());
 
 		systemUserDao.save(systemUser);
@@ -148,4 +170,7 @@ public class SystemUserManager implements SystemUserService {
 		checkUserIdExists(systemUserId, locale);
 		return systemUserDao.findById(systemUserId).get();
 	}
+
+
+	
 }

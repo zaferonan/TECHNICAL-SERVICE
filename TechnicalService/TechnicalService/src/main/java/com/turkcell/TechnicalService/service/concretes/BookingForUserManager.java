@@ -100,7 +100,8 @@ public class BookingForUserManager implements BookingForUserService {
 	}
 	
 	@Override
-	public DataResult<List<ListBookingResponse>> getAllByUser(long systemUserId, Locale locale) {		
+	public DataResult<List<ListBookingResponse>> getAllByUser(long systemUserId, Locale locale) {
+		checkUserExists(systemUserId,locale);
 		List<Booking> bookings = bookingDao.findAllBySystemUserSystemUserId(systemUserId);
 		List<ListBookingResponse> listBookingResponses = new ArrayList<ListBookingResponse>();
 
@@ -120,6 +121,11 @@ public class BookingForUserManager implements BookingForUserService {
 	}
 
 	
+	private void checkUserExists(long systemUserId, Locale locale) {
+		systemUserService.getById(systemUserId, locale);
+		
+	}
+
 	private LocalDate createBookingDate(int serviceDuration) {
 		LocalDate bookingDate = LocalDate.now();
 		int dailyWorkHours = 0;

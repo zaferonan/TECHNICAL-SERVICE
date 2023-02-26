@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
-import com.turkcell.TechnicalService.model.ProposalState;
 import com.turkcell.TechnicalService.service.abstracts.ProposalService;
 import com.turkcell.TechnicalService.service.dtos.proposal.requests.UpdateProposalStateRequest;
 import com.turkcell.TechnicalService.service.dtos.proposal.responses.ListProposalResponse;
