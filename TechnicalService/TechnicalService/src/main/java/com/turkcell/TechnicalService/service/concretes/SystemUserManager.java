@@ -33,7 +33,7 @@ public class SystemUserManager implements SystemUserService {
 	private final SystemUserDao systemUserDao;
 	private final MessageSource messageSource;
 	private final PasswordEncoder passwordEncoder;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		SystemUser myUser = systemUserDao.findByName(username);
@@ -48,8 +48,8 @@ public class SystemUserManager implements SystemUserService {
 		return builder.build();
 	}
 
-	
-	
+
+
 
 	@Override
 	public DataResult<List<ListUserResponse>> getAll(Locale locale) {
@@ -105,7 +105,7 @@ public class SystemUserManager implements SystemUserService {
 		SystemUser systemUser = new SystemUser();
 		systemUser.setSystemUserId(updateUserRequest.getUserId());
 		systemUser.setName(updateUserRequest.getUsername());
-		systemUser.setPassword(passwordEncoder.encode(updateUserRequest.getUserPassword()));
+		systemUser.setPassword(updateUserRequest.getUserPassword());
 		systemUser.setMail(updateUserRequest.getUserMail());
 
 		systemUserDao.save(systemUser);
@@ -172,5 +172,5 @@ public class SystemUserManager implements SystemUserService {
 	}
 
 
-	
+
 }

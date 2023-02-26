@@ -1,15 +1,14 @@
 package com.turkcell.TechnicalService.service.abstracts;
 
-import java.util.List;
-import java.util.Locale;
-
-import javax.validation.constraints.NotNull;
-
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
 import com.turkcell.TechnicalService.model.Sale;
 import com.turkcell.TechnicalService.service.dtos.sale.requests.CreateSaleRequest;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.ListSaleResponse;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.SaleResponse;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Locale;
 
 public interface SaleService {
 

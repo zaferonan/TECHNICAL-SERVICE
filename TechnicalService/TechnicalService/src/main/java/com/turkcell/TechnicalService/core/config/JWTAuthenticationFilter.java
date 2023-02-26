@@ -2,13 +2,20 @@ package com.turkcell.TechnicalService.core.config;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.turkcell.TechnicalService.dao.SystemUserDao;
+import com.turkcell.TechnicalService.model.Role;
+import com.turkcell.TechnicalService.service.abstracts.SystemUserService;
+import com.turkcell.TechnicalService.service.concretes.SystemUserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +34,7 @@ import com.turkcell.TechnicalService.model.SystemUser;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 {
 
+
 	private AuthenticationManager authenticationManager;
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager)
@@ -40,7 +48,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		try
 		{
 			SystemUser creds = new ObjectMapper().readValue(req.getInputStream(), SystemUser.class);
-			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(creds.getName(), creds.getPassword(), new ArrayList<GrantedAuthority>()));
+
+			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(creds.getName(), creds.getPassword(),new ArrayList<>()));
 		}
 		catch (IOException e)
 		{

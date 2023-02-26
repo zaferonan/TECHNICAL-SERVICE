@@ -1,13 +1,12 @@
 package com.turkcell.TechnicalService.service.abstracts;
 
-import java.util.List;
-import java.util.Locale;
-
-import org.springframework.data.domain.Sort;
-
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
 import com.turkcell.TechnicalService.service.dtos.booking.responses.BookingResponse;
 import com.turkcell.TechnicalService.service.dtos.booking.responses.ListBookingResponse;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
+import java.util.Locale;
 
 public interface BookingService {
 

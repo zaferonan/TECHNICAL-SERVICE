@@ -1,11 +1,10 @@
 package com.turkcell.TechnicalService.dao;
 
-import java.util.List;
-
+import com.turkcell.TechnicalService.model.Sale;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.turkcell.TechnicalService.model.Sale;
+import java.util.List;
 
 public interface SaleDao extends JpaRepository<Sale	, Long> {
 

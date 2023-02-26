@@ -1,8 +1,8 @@
 package com.turkcell.TechnicalService.service.abstracts;
 
-import java.util.Locale;
-
 import com.turkcell.TechnicalService.model.Service;
+
+import java.util.Locale;
 
 public interface ServiceService {
 

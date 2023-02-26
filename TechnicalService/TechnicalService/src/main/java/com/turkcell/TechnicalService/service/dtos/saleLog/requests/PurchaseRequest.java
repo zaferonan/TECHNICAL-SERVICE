@@ -1,12 +1,11 @@
 package com.turkcell.TechnicalService.service.dtos.saleLog.requests;
 
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.CreditCardNumber;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.CreditCardNumber;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor

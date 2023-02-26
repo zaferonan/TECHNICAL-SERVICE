@@ -1,15 +1,5 @@
 package com.turkcell.TechnicalService.service.concretes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import org.springframework.context.MessageSource;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.util.EnumUtils;
-
 import com.turkcell.TechnicalService.core.exceptions.BusinessException;
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
 import com.turkcell.TechnicalService.core.utils.results.SuccessDataResult;
@@ -20,8 +10,16 @@ import com.turkcell.TechnicalService.service.abstracts.ProposalService;
 import com.turkcell.TechnicalService.service.dtos.proposal.requests.UpdateProposalStateRequest;
 import com.turkcell.TechnicalService.service.dtos.proposal.responses.ListProposalResponse;
 import com.turkcell.TechnicalService.service.dtos.proposal.responses.ProposalResponse;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.util.EnumUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor

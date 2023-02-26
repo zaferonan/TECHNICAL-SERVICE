@@ -1,13 +1,12 @@
 package com.turkcell.TechnicalService.service.abstracts;
 
-import java.util.List;
-import java.util.Locale;
-
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
-import com.turkcell.TechnicalService.model.ProposalState;
 import com.turkcell.TechnicalService.service.dtos.proposal.requests.UpdateProposalStateRequest;
 import com.turkcell.TechnicalService.service.dtos.proposal.responses.ListProposalResponse;
 import com.turkcell.TechnicalService.service.dtos.proposal.responses.ProposalResponse;
+
+import java.util.List;
+import java.util.Locale;
 
 public interface ProposalService {
 

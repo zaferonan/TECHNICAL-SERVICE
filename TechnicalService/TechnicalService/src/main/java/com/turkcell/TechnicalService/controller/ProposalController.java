@@ -3,6 +3,7 @@ package com.turkcell.TechnicalService.controller;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
+import com.turkcell.TechnicalService.model.ProposalState;
 import com.turkcell.TechnicalService.service.abstracts.ProposalService;
 import com.turkcell.TechnicalService.service.dtos.proposal.requests.UpdateProposalStateRequest;
 import com.turkcell.TechnicalService.service.dtos.proposal.responses.ListProposalResponse;
@@ -25,6 +27,7 @@ public class ProposalController {
 	
 	private final ProposalService proposalService;
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')" )
 	@GetMapping("/getBids")
 	public DataResult<List<ListProposalResponse>> getBids(Locale locale){
 		return proposalService.getBids(locale);

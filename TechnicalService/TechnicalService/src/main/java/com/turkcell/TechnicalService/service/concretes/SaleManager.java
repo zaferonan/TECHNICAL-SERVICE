@@ -1,15 +1,5 @@
 package com.turkcell.TechnicalService.service.concretes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import javax.validation.constraints.NotNull;
-
-import org.springframework.context.MessageSource;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-
 import com.turkcell.TechnicalService.core.exceptions.BusinessException;
 import com.turkcell.TechnicalService.core.utils.results.DataResult;
 import com.turkcell.TechnicalService.core.utils.results.SuccessDataResult;
@@ -20,8 +10,15 @@ import com.turkcell.TechnicalService.service.abstracts.SaleService;
 import com.turkcell.TechnicalService.service.dtos.sale.requests.CreateSaleRequest;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.ListSaleResponse;
 import com.turkcell.TechnicalService.service.dtos.sale.responses.SaleResponse;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor

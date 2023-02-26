@@ -37,12 +37,14 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 				String user = JWT.require(Algorithm.HMAC512("MY_SECRET_KEY".getBytes())).build().verify(token.replace("Bearer ", "")).getSubject();
 				if (user != null)
 				{
-					SimpleGrantedAuthority auth = new org.springframework.security.core.authority.SimpleGrantedAuthority(user.split("-")[1]);
+					SimpleGrantedAuthority auth = new org.springframework.security.core.authority.SimpleGrantedAuthority(user.split("roleName=")[1].replaceAll("\\)",""));
 					authentication = new UsernamePasswordAuthenticationToken(user.split("-")[0], null, Collections.singletonList(auth));
 				}
 			}
 			catch (Exception e)
 			{
+				System.err.println("hata!!!!!!");
+				System.err.println(e.getMessage());
 			}
 		}
 		SecurityContextHolder.getContext().setAuthentication(authentication);

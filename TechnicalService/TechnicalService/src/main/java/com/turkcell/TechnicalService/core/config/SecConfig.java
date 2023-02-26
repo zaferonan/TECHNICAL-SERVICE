@@ -1,6 +1,7 @@
 package com.turkcell.TechnicalService.core.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -34,7 +35,8 @@ public class SecConfig {
 		AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN")
-				.antMatchers("/user/**").hasAnyRole("USER", "ADMIN").antMatchers("/login/**").anonymous().anyRequest()
+				.antMatchers("/user/**").permitAll().antMatchers("/login/**").permitAll()
+				.antMatchers("/systemuser/save").permitAll().anyRequest()
 				.authenticated().and().addFilter(new JWTAuthenticationFilter(authenticationManager))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager))
 				.authenticationManager(authenticationManager).sessionManagement()

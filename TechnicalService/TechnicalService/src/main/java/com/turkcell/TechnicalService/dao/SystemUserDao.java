@@ -1,11 +1,10 @@
 package com.turkcell.TechnicalService.dao;
 
-import java.util.List;
-
+import com.turkcell.TechnicalService.model.SystemUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.turkcell.TechnicalService.model.SystemUser;
+import java.util.List;
 
 @Repository
 public interface SystemUserDao extends JpaRepository<SystemUser, Long> {

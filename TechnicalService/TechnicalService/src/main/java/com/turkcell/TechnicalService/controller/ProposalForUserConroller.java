@@ -1,8 +1,11 @@
 package com.turkcell.TechnicalService.controller;
 
-import java.util.List;
-import java.util.Locale;
-
+import com.turkcell.TechnicalService.core.utils.results.DataResult;
+import com.turkcell.TechnicalService.service.abstracts.ProposalForUserService;
+import com.turkcell.TechnicalService.service.dtos.proposal.requests.CreateProposalRequest;
+import com.turkcell.TechnicalService.service.dtos.proposal.responses.ListProposalResponse;
+import com.turkcell.TechnicalService.service.dtos.proposal.responses.ProposalResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,13 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.turkcell.TechnicalService.core.utils.results.DataResult;
-import com.turkcell.TechnicalService.service.abstracts.ProposalForUserService;
-import com.turkcell.TechnicalService.service.dtos.proposal.requests.CreateProposalRequest;
-import com.turkcell.TechnicalService.service.dtos.proposal.responses.ListProposalResponse;
-import com.turkcell.TechnicalService.service.dtos.proposal.responses.ProposalResponse;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("proposal")

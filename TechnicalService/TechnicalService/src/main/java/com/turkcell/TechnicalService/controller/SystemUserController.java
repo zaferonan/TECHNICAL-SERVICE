@@ -1,10 +1,12 @@
 package com.turkcell.TechnicalService.controller;
 
-import java.util.List;
-import java.util.Locale;
-
-import javax.validation.Valid;
-
+import com.turkcell.TechnicalService.core.utils.results.DataResult;
+import com.turkcell.TechnicalService.service.abstracts.SystemUserService;
+import com.turkcell.TechnicalService.service.dtos.user.requests.CreateUserRequest;
+import com.turkcell.TechnicalService.service.dtos.user.requests.UpdateUserRequest;
+import com.turkcell.TechnicalService.service.dtos.user.responses.ListUserResponse;
+import com.turkcell.TechnicalService.service.dtos.user.responses.UserResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,14 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.turkcell.TechnicalService.core.utils.results.DataResult;
-import com.turkcell.TechnicalService.service.abstracts.SystemUserService;
-import com.turkcell.TechnicalService.service.dtos.user.requests.CreateUserRequest;
-import com.turkcell.TechnicalService.service.dtos.user.requests.UpdateUserRequest;
-import com.turkcell.TechnicalService.service.dtos.user.responses.ListUserResponse;
-import com.turkcell.TechnicalService.service.dtos.user.responses.UserResponse;
-
-import lombok.RequiredArgsConstructor;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Locale;
 
 
 @RestController

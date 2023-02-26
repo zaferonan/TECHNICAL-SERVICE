@@ -1,8 +1,6 @@
 package com.turkcell.TechnicalService.core.exceptions;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.turkcell.TechnicalService.core.utils.results.ErrorDataResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,7 +10,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import com.turkcell.TechnicalService.core.utils.results.ErrorDataResult;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {

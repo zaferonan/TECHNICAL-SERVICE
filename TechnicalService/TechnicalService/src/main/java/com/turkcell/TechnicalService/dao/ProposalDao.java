@@ -1,13 +1,12 @@
 package com.turkcell.TechnicalService.dao;
 
-import java.util.List;
-
+import com.turkcell.TechnicalService.model.Proposal;
+import com.turkcell.TechnicalService.model.ProposalState;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.turkcell.TechnicalService.model.Proposal;
-import com.turkcell.TechnicalService.model.ProposalState;
+import java.util.List;
 
 @Repository
 public interface ProposalDao extends JpaRepository<Proposal, Long>{

@@ -24,7 +24,7 @@ public class PurchaseResponse {
 	private String productName;
 
 	private double salePrice;
-	
+
 	@JsonFormat(pattern = "dd.MM.yyyy - HH:mm")
 	private LocalDateTime purchaseDate;
 	
