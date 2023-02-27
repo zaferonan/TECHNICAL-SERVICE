@@ -73,7 +73,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		String str = principal.getUsername() + "-" + rolestring;
 		String token = JWT.create().withSubject(str).withExpiresAt(new Date(System.currentTimeMillis() + 900000)).sign(Algorithm.HMAC512("MY_SECRET_KEY".getBytes()));
 		// body = (recep) 30948hgb57gbhg9wpuısgh==
-		String body = "(" + principal.getUsername() + ") " + token;
+		String body = principal.getUsername() + "-" + token;
 		res.getWriter().write(body);
 		res.getWriter().flush();
 	}
